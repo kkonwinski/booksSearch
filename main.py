@@ -1,5 +1,5 @@
 from app.books_adapter import FreeBooksAdapter
-from app.book import Book
+from app.chat_gbt import ChatGbtAdapter
 
 
 class Application:
