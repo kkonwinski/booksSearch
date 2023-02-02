@@ -12,9 +12,10 @@ class Application:
 
         search_author_id = int(input('Podaj numer autora, którego chcesz zobaczyć: '))
         found_author = next(filter(lambda x: x.author_id == search_author_id, authors))
-        books = Book()
-        for book in books.get_books(found_author.slug, adapter.API_URL):
-            print(book.get('title'))
+        author_books = adapter.get_author_books(found_author.slug, adapter.API_URL)
+        books = adapter.get_books_details(author_books)
+        for book in books:
+            print(book)
 
 
 if __name__ == '__main__':

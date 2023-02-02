@@ -1,5 +1,7 @@
 from requests import get
 from app.author import Author
+from app.book import Book
+import json
 
 
 class FreeBooksAdapter:
@@ -18,4 +20,17 @@ class FreeBooksAdapter:
                 ))
         return authors
 
+    def get_books_details(self, author_books:list):
+        books_list = []
+        for book_id, book in enumerate(author_books, start=1):
+            books_list.append(Book(
+                book_id=book_id,
+                slug=book.get('slug'),
+                title=book.get('title'),
+                epoch=book.get('epoch'),
+                genre=book.get('genre')
+            ))
+        return books_list
 
+    def get_author_books(self, author_slug: str, api_url: str):
+        return get(f'{api_url}authors/{author_slug}/books').json()
