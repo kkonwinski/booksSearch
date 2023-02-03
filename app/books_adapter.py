@@ -28,7 +28,7 @@ class FreeBooksAdapter:
                 slug=book.get('slug'),
                 title=book.get('title'),
                 epoch=book.get('epoch'),
-                genre=book.get('genre')
+                genre=book.get('genre'),
             ))
         return books_list
 
